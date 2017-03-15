@@ -1,0 +1,42 @@
+pluto -> cp env.sh to py_setup.sh
+dobjobs: source env.sh and go to dir
+dof sales -> cp env to env.sh
+hpd registrations -> source env.sh and run set of cmds
+hpd violations -> cp env to pg_setup and add additional var
+rent stab -> source ./env.sh
+
+#  TODO
+1) standardize env / pg setup [ rm pg_setup when done ]
+2) use a single python3 virtual env
+3) write nyc_db specific scripts in the modules
+4) more documentation
+5) makefile + bin folder
+6)
+
+
+/
+  Makefile (formally nyc_db)
+  bin/
+    docker_run.sh
+    dof_sales.sh
+    download_pluto.sh
+    download.sh
+    pluto.sh
+    rentstab.sh
+    hpd_registrations.sh
+    hpd_violations.sh
+    check_installation.py
+  data/ [gitignored]
+     [downloaded data here]
+  docker/
+    Dockerfile
+    docker_env.sh
+    docker-compose.yml
+    postgres-data/ [gitignored]
+  modules /
+      [submodules]
+  doc/
+    sample_setup.sh
+    documentation.md
+  LICENSE
+  README

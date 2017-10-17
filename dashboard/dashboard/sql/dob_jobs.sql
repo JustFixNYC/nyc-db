@@ -12,6 +12,11 @@ SELECT
 		when dobjobs.jobtype = 'A2' then 1
 		when dobjobs.jobtype = 'DM' then 1
 		else 0 end) as total
+	/*test for high stab loss*/
+	case when ((cast(uc2007 as float) - 
+                cast(uc2016 as float)) 
+               /cast(uc2007 as float) >= 0.25) then 'yes' else 'no' end as highloss
+
 FROM dobjobs
 LEFT JOIN pluto_16v2 pluto on dobjobs.bbl = pluto.bbl
 INNER JOIN rentstab c on c.ucbbl = dobjobs.bbl

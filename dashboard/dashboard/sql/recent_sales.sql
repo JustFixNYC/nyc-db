@@ -6,6 +6,10 @@ select	pluto.bbl,
 	to_char(saledate, 'YYYY-MM-DD') as iso_date,
    	sales.saledate,
 	hpd_reg.corpnames
+      /*test for high stab loss*/
+      case when ((cast(uc2007 as float) - 
+                cast(uc2016 as float)) 
+               /cast(uc2007 as float) >= 0.25) then 'yes' else 'no' end as highloss
 FROM dof_sales sales
 LEFT JOIN pluto_16v2 pluto on sales.bbl = pluto.bbl
 INNER JOIN rentstab ON rentstab.ucbbl = pluto.bbl

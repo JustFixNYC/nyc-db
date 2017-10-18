@@ -5,7 +5,7 @@ select	pluto.bbl,
    	sales.saleprice / nullif(sales.grosssquarefeet, 0) as ppgsf,
 	to_char(saledate, 'YYYY-MM-DD') as iso_date,
    	sales.saledate,
-	hpd_reg.corpnames
+	hpd_reg.corpnames,
       /*test for high stab loss*/
       case when ((cast(uc2007 as float) - 
                 cast(uc2016 as float)) 

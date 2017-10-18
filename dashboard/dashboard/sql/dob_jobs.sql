@@ -11,7 +11,7 @@ SELECT
 		when dobjobs.jobtype = 'A1' then 1
 		when dobjobs.jobtype = 'A2' then 1
 		when dobjobs.jobtype = 'DM' then 1
-		else 0 end) as total
+		else 0 end) as total,
 	/*test for high stab loss*/
 	case when ((cast(uc2007 as float) - 
                 cast(uc2016 as float)) 

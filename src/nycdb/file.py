@@ -1,3 +1,4 @@
+import codecs
 import os
 import requests
 import logging
@@ -28,10 +29,11 @@ def download_file(url, dest):
     try:
         logging.info("Downloading {url} to {dest}".format(url=url, dest=dest))
         r = requests.get(url, stream=True)
-        with open(dest, 'wb') as f:
+        with open(dest, mode='w', encoding='utf-8', errors='replace') as f:
             for chunk in r.iter_content(chunk_size=(512 * 1024)):
                 if chunk:
-                    f.write(chunk)
+                    string = codecs.decode(chunk, encoding='utf-8', errors='replace')
+                    f.write(string)
         return True
     except:
         raise DownloadFailedException("Could not download: {}".format(url))
